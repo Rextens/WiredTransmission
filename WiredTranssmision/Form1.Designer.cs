@@ -32,47 +32,71 @@ namespace WiredTranssmision
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.Spectrum = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.FunctionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)(this.Spectrum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FunctionChart)).BeginInit();
             this.SuspendLayout();
             // 
-            // chart1
+            // Spectrum
             // 
+            chartArea1.AxisX.Interval = 100D;
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Spectrum.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(0, 0);
-            this.chart1.Name = "chart1";
+            this.Spectrum.Legends.Add(legend1);
+            this.Spectrum.Location = new System.Drawing.Point(12, 296);
+            this.Spectrum.Name = "Spectrum";
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1175, 625);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
-            this.chart1.Click += new System.EventHandler(this.chart1_Click);
+            this.Spectrum.Series.Add(series1);
+            this.Spectrum.Size = new System.Drawing.Size(614, 306);
+            this.Spectrum.TabIndex = 0;
+            this.Spectrum.Text = "chart1";
+            this.Spectrum.MouseUp += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseWheel);
+            // 
+            // FunctionChart
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.FunctionChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.FunctionChart.Legends.Add(legend2);
+            this.FunctionChart.Location = new System.Drawing.Point(25, 12);
+            this.FunctionChart.Name = "FunctionChart";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.FunctionChart.Series.Add(series2);
+            this.FunctionChart.Size = new System.Drawing.Size(601, 278);
+            this.FunctionChart.TabIndex = 1;
+            this.FunctionChart.Text = "chart2";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1175, 625);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.FunctionChart);
+            this.Controls.Add(this.Spectrum);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Spectrum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FunctionChart)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Spectrum;
+        private System.Windows.Forms.DataVisualization.Charting.Chart FunctionChart;
     }
 }
 
