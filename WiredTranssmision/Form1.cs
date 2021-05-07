@@ -23,8 +23,13 @@ namespace WiredTranssmision
         List<double> functionXValues = new List<double>();
         List<double> functionYValues = new List<double>();
 
+        List<double> movementXValues = new List<double>();
+        List<double> movementYValues = new List<double>();
+
         string functionPeriod = "";
         string functionScript = "";
+
+        int maxXInterval = 0;
 
         public Form1()
         {
@@ -61,6 +66,9 @@ namespace WiredTranssmision
 
         private void button1_Click(object sender, EventArgs e)
         {
+            functionXValues.Clear();
+            functionYValues.Clear();
+
             this.MouseWheel += new MouseEventHandler(chart1_MouseWheel);
 
             dynamic funcScript = CSScript.Evaluator.LoadMethod(@"double func(double t)
@@ -128,14 +136,18 @@ namespace WiredTranssmision
 
             double sr = howMany / (period * intervals);
 
-            for (int i = 0; i < 100; ++i)
+            for (int i = 0; i < maxXInterval; ++i)
             {
+                movementYValues.Add(Math.Atan2(data[i].Re, data[i].Im));
+                movementXValues.Add((double)i * sr / howMany);
+
                 spectrumYValues.Add(bins[i] * 2);
                 spectrumXValues.Add((double)i * sr / howMany);
             }
 
-            Spectrum.Series["Series1"].Points.DataBindXY(spectrumXValues, spectrumYValues);
-            FunctionChart.Series["Series1"].Points.DataBindXY(functionXValues, functionYValues);
+            Spectrum.Series["Transformation"].Points.DataBindXY(spectrumXValues, spectrumYValues);
+            FunctionChart.Series["Function"].Points.DataBindXY(functionXValues, functionYValues);
+            chart1.Series["Movement"].Points.DataBindXY(movementXValues, movementYValues);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -146,6 +158,36 @@ namespace WiredTranssmision
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             functionPeriod = textBox2.Text;
+        }
+
+        private void FunctionChart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Spectrum_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            maxXInterval = decimal.ToInt32(numericUpDown1.Value);
         }
     }
 }
