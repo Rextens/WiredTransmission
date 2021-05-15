@@ -69,6 +69,12 @@ namespace WiredTranssmision
             functionXValues.Clear();
             functionYValues.Clear();
 
+            spectrumXValues.Clear();
+            spectrumYValues.Clear();
+
+            movementXValues.Clear();
+            movementYValues.Clear();
+
             this.MouseWheel += new MouseEventHandler(chart1_MouseWheel);
 
             dynamic funcScript = CSScript.Evaluator.LoadMethod(@"double func(double t)
